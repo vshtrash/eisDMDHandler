@@ -1,9 +1,8 @@
 package com.dmd;
 
-import com.dmd.service.settings.handlers.GeneralSettingsHandler;
+import com.dmd.xml.settings.GeneralSettingsHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.dmd.service.HelloMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -31,9 +30,11 @@ public class EisDmdHandlerApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		if (args.length > 0) {
+			generalSettingsHandler.saveSettings(null);
 			generalSettingsHandler.loadSettings(args[0].toString());
 			//System.out.println(helloService.getMessage(args[0].toString()));
 		} else {
+			generalSettingsHandler.saveSettings(null);
 			generalSettingsHandler.loadSettings(null);
 		}
 
